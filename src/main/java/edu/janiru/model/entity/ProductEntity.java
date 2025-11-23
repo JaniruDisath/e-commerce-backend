@@ -20,9 +20,23 @@ public class ProductEntity {
     private Long id;
 
     private String name;
-    private String email;
-    private String phone;
-    private String address;
-    private LocalDate createdDate;
+    private String description;
+
+    private String sku;
+    private String barcode;
+
+    private String color;
+    private String size;
+
+    private double price;
+
+    private int stockQuantity;
+
+    private String brand;   // Optional: Nike, Adidas
+    private String material; // Cotton, Polyester
+
+    private String imageUrl;
+
+    private boolean active = true;
 
 }

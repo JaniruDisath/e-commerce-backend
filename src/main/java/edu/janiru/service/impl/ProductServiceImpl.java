@@ -31,21 +31,29 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts() {
         return Mapper.toModelList(productRepository.findAll());
     }
-
     @Override
     public Product updateProduct(Long id, Product updatedProduct) {
-        Product product = Mapper.toModel(productRepository.findById(id).orElse(null));
+        ProductEntity existingEntity = productRepository.findById(id).orElse(null);
 
-        if (product == null) return null;
+        if (existingEntity == null) return null;
 
-        product.setName(updatedProduct.getName());
-        product.setEmail(updatedProduct.getEmail());
-        product.setPhone(updatedProduct.getPhone());
-        product.setAddress(updatedProduct.getAddress());
-        product.setCreatedDate(updatedProduct.getCreatedDate());
+        existingEntity.setName(updatedProduct.getName());
+        existingEntity.setDescription(updatedProduct.getDescription());
+        existingEntity.setSku(updatedProduct.getSku());
+        existingEntity.setBarcode(updatedProduct.getBarcode());
+        existingEntity.setColor(updatedProduct.getColor());
+        existingEntity.setSize(updatedProduct.getSize());
+        existingEntity.setPrice(updatedProduct.getPrice());
+        existingEntity.setStockQuantity(updatedProduct.getStockQuantity());
+        existingEntity.setBrand(updatedProduct.getBrand());
+        existingEntity.setMaterial(updatedProduct.getMaterial());
+        existingEntity.setImageUrl(updatedProduct.getImageUrl());
+        existingEntity.setActive(updatedProduct.isActive());
 
-        return Mapper.toModel(productRepository.save(Mapper.toEntity(product)));
+        ProductEntity saved = productRepository.save(existingEntity);
+        return Mapper.toModel(saved);
     }
+
 
     @Override
     public void deleteProduct(Long id) {

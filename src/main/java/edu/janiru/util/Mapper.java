@@ -2,32 +2,23 @@ package edu.janiru.util;
 
 import edu.janiru.model.dto.Product;
 import edu.janiru.model.entity.ProductEntity;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
 
+    @Autowired
+    private static ModelMapper modelMapper;
+
     public static Product toModel (ProductEntity productEntity){
-        return new Product(
-                productEntity.getId(),
-                productEntity.getName(),
-                productEntity.getEmail(),
-                productEntity.getPhone(),
-                productEntity.getAddress(),
-                productEntity.getCreatedDate()
-        );
+        return modelMapper.map(productEntity, Product.class);
     }
 
     public static ProductEntity toEntity (Product product){
-        return new ProductEntity(
-                product.getId(),
-                product.getName(),
-                product.getEmail(),
-                product.getPhone(),
-                product.getAddress(),
-                product.getCreatedDate()
-        );
+        return modelMapper.map(product, ProductEntity.class);
     }
 
     public static List<Product> toModelList(List<ProductEntity> productEntities){
