@@ -28,8 +28,6 @@ public class Product {
     private String brand;   // Optional: Nike, Adidas
     private String material; // Cotton, Polyester
 
-    private String imageUrl;
-
     private boolean active = true;
 
 }
