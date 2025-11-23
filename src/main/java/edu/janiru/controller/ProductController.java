@@ -39,6 +39,12 @@ public class ProductController {
         return productService.updateProduct(id, Product);
     }
 
+    // UPDATE Quantity
+    @PutMapping("/update/{id}/{quantity}")
+    public void update(@PathVariable Long id, @PathVariable Integer quantity) {
+        productService.updateQuantity(id, quantity);
+    }
+
     // DELETE
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {

@@ -28,14 +28,13 @@ public class ProductEntity {
     private String color;
     private String size;
 
-    private double price;
+    private Double price;
 
-    private int stockQuantity;
+    private Integer stockQuantity;
 
     private String brand;   // Optional: Nike, Adidas
     private String material; // Cotton, Polyester
 
-
-    private boolean active = true;
+    private Boolean active = true;
 
 }
